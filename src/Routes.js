@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import EmployeeDashboard from './Components/Employee/EmployeeDashboard';
+import EmployeeList from './Components/Employee/EmployeeList';
 import AdminEmployeeDashboard from './Components/Admin/AdminEmployeeDashboard';
 
 const routes = [
   {
     path: '/',
-    Component: EmployeeDashboard,
+    Component: EmployeeList,
     exact: true
   },
   {
