@@ -2,6 +2,7 @@ import React from 'react';
 import useEmployeeRecords from '../CustomHooks/useEmployeeRecords';
 import AdminEmployeeDetails from './AdminEmployeeDetails';
 import ReactVirtualizedTable from '../Table/EmployeeTable';
+import CreateEmployee from '../Admin/CreateEmployee';
 
 const AdminEmployeeList = () => {
 
@@ -37,6 +38,9 @@ const AdminEmployeeList = () => {
       <h1>PayPay Admin Employee Dashboard</h1>
       <br></br>
       <p>Employee's with Performance Review Completed! Click the name to view details.</p>
+      <p>Create New Employee!</p>
+      <CreateEmployee />
+      <br></br>
       <ReactVirtualizedTable 
         employees={employees}
       />
