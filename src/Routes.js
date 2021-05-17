@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import EmployeeList from './Components/Employee/EmployeeList';
-import AdminEmployeeDashboard from './Components/Admin/AdminEmployeeDashboard';
+import EmployeeDetails from './Components/Employee/EmployeeDetails';
+import AdminEmployeeList from './Components/Admin/AdminEmployeeList';
 
 const routes = [
   {
@@ -9,9 +10,13 @@ const routes = [
     Component: EmployeeList,
     exact: true
   },
+  // {
+  //   path: '/employee/:id',
+  //   Component: EmployeeDetails
+  // },
   {
     path: '/admin',
-    Component: AdminEmployeeDashboard
+    Component: AdminEmployeeList
   }
 ];
 
