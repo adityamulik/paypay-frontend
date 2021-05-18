@@ -152,7 +152,7 @@ export default function ReactVirtualizedTable(employees) {
   console.log(rows);
 
   return (
-    <Paper style={{ height: 400, width: 890 }}>
+    <Paper style={{ height: 400, width: 1090 }}>
       <VirtualizedTable
         rowCount={rows.length}
         rowGetter={({ index }) => rows[index]}
@@ -181,7 +181,7 @@ export default function ReactVirtualizedTable(employees) {
             numeric: false,
           },
           {
-            width: 220,
+            width: 320,
             label: 'Performance Review',
             dataKey: 'performance_review',
             numeric: false,
