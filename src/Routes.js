@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import EmployeeList from './Components/Employee/EmployeeList';
 import EmployeeDetails from './Components/Employee/EmployeeDetails';
 import AdminEmployeeList from './Components/Admin/AdminEmployeeList';
+import CreateEmployee from './Components/Admin/CreateEmployee';
 
 const routes = [
   {
@@ -10,10 +11,10 @@ const routes = [
     Component: EmployeeList,
     exact: true
   },
-  // {
-  //   path: '/employee/:id',
-  //   Component: EmployeeDetails
-  // },
+  {
+    path: '/admin/createemployee',
+    Component: CreateEmployee
+  },
   {
     path: '/admin',
     Component: AdminEmployeeList

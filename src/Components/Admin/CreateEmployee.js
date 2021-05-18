@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SimpleModal from '../Modal/SimpleModal';
+import {Link} from 'react-router-dom';
 
 const CreateEmployee = () => {
 
@@ -10,22 +12,49 @@ const CreateEmployee = () => {
     console.log(formData);
 
     axios.post('/api/admin/employee', formData)
-      .then(res => console.log(res))
+      .then(res => {
+        if(res.status === 200) {
+          <SimpleModal 
+            isOpen={true}
+            message={"Employee has been created!"}
+          />
+        }
+      })
       .catch(err => console.log(err));
   }
 
   return (
     <div className="create-employee-wrapper">
+      <h2>Create New Employee</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="name" name="name" onChange={e => setData({...formData, name: e.target.value})}>
-        </input>
-        <input type="text" placeholder="email" name="email" onChange={e => setData({...formData, email: e.target.value})}>
-        </input>
-        <input type="text" placeholder="role" name="role" onChange={e => setData({...formData, role: e.target.value})}>
-        </input>
-        <input type="text" placeholder="performance_review" name="performance_review" onChange={e => setData({...formData, performance_review: e.target.value})}>
-        </input>
-        <button type="submit">Submit</button>
+        <div className="form-input">
+          <label for="name">Name: </label>
+          <input type="text" placeholder="name" name="name" onChange={e => setData({...formData, name: e.target.value})}>
+          </input>
+        </div>
+        <div className="form-input">
+          <label for="email">Email: </label>
+          <input type="text" placeholder="email" name="email" onChange={e => setData({...formData, email: e.target.value})}>
+          </input>
+        </div>
+        <div className="form-input">
+          <label for="role">Role: </label>
+          <input type="text" placeholder="role" name="role" onChange={e => setData({...formData, role: e.target.value})}>
+          </input>
+        </div>
+        <div className="form-input">
+          <label for="performance_review">Performance Review: </label>
+          <textarea
+            style={{width: 450, height: 100}} 
+            placeholder="performance_review" 
+            name="performance_review" 
+            onChange={e => setData({...formData, performance_review: e.target.value})}
+          />
+        </div>
+        <div className="button">
+          <button type="button"><Link to="/admin" className="btn btn-primary">Back</Link></button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   )

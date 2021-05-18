@@ -187,15 +187,15 @@ export default function ReactVirtualizedTable(employees) {
             numeric: false,
           },
           {
-            width: 160,
-            label: 'Feedback Count',
-            dataKey: 'feedback_count',
+            width: 20,
+            label: 'Edit',
+            dataKey: 'edit',
           },
           {
             width: 20,
-            label: 'View',
-            dataKey: 'view',
-          }
+            label: 'Delete',
+            dataKey: 'delete',
+          },
         ]}
       />
     </Paper>
