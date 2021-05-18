@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import SimpleModal from '../Modal/SimpleModal';
 import {Link} from 'react-router-dom';
 
 const CreateEmployee = () => {
@@ -14,10 +13,7 @@ const CreateEmployee = () => {
     axios.post('/api/admin/employee', formData)
       .then(res => {
         if(res.status === 200) {
-          <SimpleModal 
-            isOpen={true}
-            message={"Employee has been created!"}
-          />
+          window.alert(res.data.message)
         }
       })
       .catch(err => console.log(err));
