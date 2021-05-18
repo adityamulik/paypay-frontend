@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import EmployeeDetails from './EmployeeDetails';
 import useEmployeeRecords from '../CustomHooks/useEmployeeRecords';
-import ReactVirtualizedTable from '../Table/EmployeeTable';
+import EmployeeTable from '../Table/EmployeeTable';
 
 const EmployeeList = () => {
 
@@ -20,8 +19,7 @@ const EmployeeList = () => {
       <h1>PayPay Employee Dashboard</h1>
       <br></br>
       <p>Employee's with Performance Review Completed! Click the name to view details.</p>
-      <ReactVirtualizedTable 
-        employees={empsWithPerfReview}
+      <EmployeeTable 
       />
     </div>
   )

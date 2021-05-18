@@ -49,7 +49,6 @@ const [errorMessages, setErrorMessages] = useState([]);
   useEffect(() => {
     axios.get('/api/employees')
       .then(res => {
-        console.log(res.data);
         setData(res.data)
       })
       .catch(error=>{
@@ -63,9 +62,7 @@ const [errorMessages, setErrorMessages] = useState([]);
       .then(res => {
         const dataDelete = [...data];
         const index = oldData.tableData.id;
-        console.log(index);
         dataDelete.splice(index, 1);
-        console.log(dataDelete);
         setData([...dataDelete]);
         resolve()
       })
@@ -74,6 +71,42 @@ const [errorMessages, setErrorMessages] = useState([]);
         setIserror(true)
         resolve()
       })
+  }
+
+  const handleRowUpdate = (newData, oldData, resolve) => {
+    let errorList = []
+
+    if(newData.name === undefined){
+      errorList.push("Please enter name")
+    }
+    if(newData.email === undefined){
+      errorList.push("Please enter email")
+    }
+    if(newData.role === undefined){
+      errorList.push("Please enter a valid email")
+    }
+
+    if(errorList.length < 1){
+      axios.put(`/api/admin/employee/update/${newData.employee_id}`, newData)
+        .then(res => {
+          const dataUpdate = [...data];
+          const index = oldData.tableData.id;
+          dataUpdate[index] = newData;
+          setData([...dataUpdate]);
+          resolve()
+          setIserror(false)
+          setErrorMessages([])
+        })
+        .catch(error => {
+          setErrorMessages(["Update failed! Server error"])
+          setIserror(true)
+          resolve()
+      })
+    }else{
+      setErrorMessages(errorList)
+      setIserror(true)
+      resolve()
+    }
   }
   
   return (
@@ -88,21 +121,14 @@ const [errorMessages, setErrorMessages] = useState([]);
           { title: 'Performance Review', field: 'performance_review'}
         ]}
         data = {data}
-        title = "Employee Table"
+        title = "Employee Table (For Admins)"
         options={{
           search: false
         }}
         editable={{
           onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // const dataUpdate = [...data];
-                    const index = oldData.tableData.id;
-                    // dataUpdate[index] = newData;
-                    // setData([...dataUpdate]);
-
-                    resolve();
-                }, 1000);
+            new Promise((resolve) => {
+              handleRowUpdate(newData, oldData, resolve)
             }),
           onRowDelete: oldData =>
             new Promise((resolve) => {

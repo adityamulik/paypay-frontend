@@ -12,6 +12,11 @@ const routes = [
     exact: true
   },
   {
+    path: '/employee/:id',
+    Component: EmployeeDetails,
+    exact: true
+  },
+  {
     path: '/admin/createemployee',
     Component: CreateEmployee
   },
