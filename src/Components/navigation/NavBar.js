@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import firebase from 'firebase/app';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +23,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = ({user}) => {
+
+  const history = useHistory();
 
   const classes = useStyles();
+
+  const onClickLogout = async () => {
+    firebase.auth().signOut();
+    history.push('/login');
+  }
 
   return (
     <nav>
@@ -34,8 +42,21 @@ const NavBar = () => {
           </IconButton>
           <Typography variant="h6" className={classes.title} containerElement={<Link to="/" />}>
             <Button color="inherit" href="/" className={classes.title}>PayPay</Button>
-          </Typography>          
-          <Button color="inherit">Login</Button>
+          </Typography>  
+          {user
+            ?
+              <div>
+                <Button 
+                  color="inherit"
+                  onClick={onClickLogout}
+                  className="logout"
+                >Logout
+                </Button>
+                <p className="logged-in-as space-before">Logged in as {user.email}</p>
+              </div>
+              :
+              null
+          }                  
         </Toolbar>
       </AppBar>
     </nav>

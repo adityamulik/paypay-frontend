@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import useUser from '../auth/useUser';
 
 const EmployeeDetails = () => {
+  const { isLoading, user } = useUser();
 
   const history = useHistory();
   const employee = history.location.state.datas;
@@ -44,7 +46,7 @@ const EmployeeDetails = () => {
       <div>Performance Review: {employee.performance_review}</div>
       <p>Add Feedback:</p>
       <form onSubmit={handleSubmit}>
-        <textarea className="comment" style={{width: 400, height: 100}} placeholder="Type your feedback here." onChange={e => setData({...formData, feedback: e.target.value, feedback_user: employee.employee_id, feedback_by: 0})}></textarea>
+        <textarea className="comment" style={{width: 400, height: 100}} placeholder="Type your feedback here." onChange={e => setData({...formData, feedback: e.target.value, feedback_user: employee.employee_id, feedback_by: user.email})}></textarea>
         <br></br><br></br>
         <button type="submit">Submit</button>
       </form>
