@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import React, { useState, useEffect }  from 'react';
 import MaterialTable from 'material-table';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import RateReviewIcon from '@material-ui/icons/RateReview';
@@ -46,7 +46,8 @@ const EmployeeTable = () => {
 
   const [data, setData] = useState([]);
   const [iserror, setIserror] = useState(false);
-const [errorMessages, setErrorMessages] = useState([]);
+  const [errorMessages, setErrorMessages] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     axios.get('/api/employees')
@@ -87,7 +88,8 @@ const [errorMessages, setErrorMessages] = useState([]);
         actions={[
           {
             icon: () => <RateReviewIcon />,
-            onClick: (event, rowData) => window.location.href=`/employee/${rowData.employee_id}`
+            // onClick: (event, rowData) => window.location.href=`/employee/${rowData.employee_id}`
+            onClick: (event, rowData) => history.push(`/employee/${rowData.employee_id}`, {datas: rowData})
           }
         ]}
       />

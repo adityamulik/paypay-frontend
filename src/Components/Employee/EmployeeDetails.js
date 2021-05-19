@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-const EmployeeDetails = ({employee}) => {
+const EmployeeDetails = () => {
+
+  const history = useHistory();
+
+  const employee = history.location.state.datas;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit!");
   }
 
-  console.log(employee.feedback);
+  // console.log(employee.feedback);
 
   return (
     <div className="employeeList">
