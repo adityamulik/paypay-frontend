@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import useEmployeeRecords from '../CustomHooks/useEmployeeRecords';
 import EmployeeTable from '../Table/EmployeeTable';
 
 const EmployeeList = () => {
-
-  const { employees, isLoading: isLoadingEmployees, setEmployees } = useEmployeeRecords();
-
-  const empsWithPerfReview = [];
-
-  employees.forEach(item => {
-    if(item.performance_review !== null) {
-      empsWithPerfReview.push(item)
-    }    
-  })
 
   return (
     <div className="container-wrapper">

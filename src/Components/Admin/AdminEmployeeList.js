@@ -1,5 +1,4 @@
 import React from 'react';
-import useEmployeeRecords from '../CustomHooks/useEmployeeRecords';
 import EmployeeTableAdmin from '../Table/EmployeeTableAdmin';
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
