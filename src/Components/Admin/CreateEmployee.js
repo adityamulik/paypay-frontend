@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const CreateEmployee = () => {
 
@@ -20,7 +21,7 @@ const CreateEmployee = () => {
   }
 
   return (
-    <div className="create-employee-wrapper">
+    <div className="container-wrapper">
       <h2>Create New Employee</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-input">
@@ -48,7 +49,7 @@ const CreateEmployee = () => {
           />
         </div>
         <div className="button">
-          <button type="button"><Link to="/admin" className="btn btn-primary">Back</Link></button>
+          <button type="button" href="/">Back</button>
           <button type="submit">Submit</button>
         </div>
       </form>

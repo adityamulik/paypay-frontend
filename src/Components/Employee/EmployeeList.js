@@ -15,7 +15,7 @@ const EmployeeList = () => {
   })
 
   return (
-    <div className="employeeList">
+    <div className="container-wrapper">
       <h1>PayPay Employee Dashboard</h1>
       <br></br>
       <p>Employee's with Performance Review Completed! Click the name to view details.</p>

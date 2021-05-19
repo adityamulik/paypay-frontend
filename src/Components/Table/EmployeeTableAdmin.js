@@ -121,7 +121,7 @@ const [errorMessages, setErrorMessages] = useState([]);
           { title: 'Performance Review', field: 'performance_review'}
         ]}
         data = {data}
-        title = "Employee Table (For Admins)"
+        title = "Employee Table (For Admin)"
         options={{
           search: false
         }}

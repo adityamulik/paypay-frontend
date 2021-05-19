@@ -22,7 +22,7 @@ const AdminEmployeeList = () => {
   const classes = useStyles();
   
   return (
-    <div className="employeeList">
+    <div className="container-wrapper">
       <h1>PayPay Admin Employee Dashboard</h1>
       <br></br>
       <Tooltip title="Add Employee" aria-label="add">

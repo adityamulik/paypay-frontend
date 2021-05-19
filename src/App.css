@@ -1,6 +1,6 @@
-.App {
- padding-left: 235px; 
- padding-right: 235px; 
+.container-wrapper {
+  padding-left: 235px; 
+  padding-right: 235px; 
 }
 
 .feedback-container {
