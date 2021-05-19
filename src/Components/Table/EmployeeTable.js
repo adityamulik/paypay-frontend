@@ -20,6 +20,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import Tooltip from '@material-ui/core/Tooltip';
 import axios from 'axios';
 
 const tableIcons = {
@@ -51,20 +52,20 @@ const EmployeeTable = () => {
 
   useEffect(() => {
     axios.get('/api/employees')
-      .then(res => {
-        // let mainData = [];
-        res.data.forEach(item => {                   
-          // if (item.performance_review.trim().length !== 0 || item.performance_review !== null) {
-          //   mainData.push(item);
-          // }      
-        })        
+      .then(res => {      
         setData(res.data);
       })
       .catch(error=>{
         setErrorMessages(["Cannot load user data"])
         setIserror(true)
       })
+    
   },[])
+
+  const newData = data.map(item => ({
+    ...item,
+    feedback_count: item.feedback.length
+  }))
 
   
   return (
@@ -79,7 +80,7 @@ const EmployeeTable = () => {
           { title: 'Performance Review', field: 'performance_review'},
           { title: 'Feedback Count', field: 'feedback_count'}
         ]}
-        data = {data}
+        data = {newData}
         title = "Employee Table"
         options={{
           search: false,
@@ -87,7 +88,7 @@ const EmployeeTable = () => {
         }}
         actions={[
           {
-            icon: () => <RateReviewIcon />,
+            icon: () => <Tooltip title="View" aria-label="add"><RateReviewIcon /></Tooltip>,
             // onClick: (event, rowData) => window.location.href=`/employee/${rowData.employee_id}`
             onClick: (event, rowData) => history.push(`/employee/${rowData.employee_id}`, {datas: rowData})
           }
