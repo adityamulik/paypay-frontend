@@ -15,17 +15,18 @@ const EmployeeDetails = () => {
   // console.log(feedbackData);
 
   useEffect(() => {
-    axios.get(`/api/employee/feedback/${employee.employee_id}`)
+    axios.get(`/api/employee/${employee.employee_id}/feedback/`)
       .then(res => setFeedbackData(res.data));
   }, [feedbackData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post(`/api/employees/${employee.employee_id}/feedback`, formData)
+    axios.post(`/api/employee/${employee.employee_id}/create/feedback`, formData)
       .then(res => {
         if(res.status === 200) {
           window.alert(res.data.message)
+          setData("");
           // const dataUpdate = feedbackData;
           // console.log(dataUpdate);
           // console.log(formData);

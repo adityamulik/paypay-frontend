@@ -48,6 +48,12 @@ const NavBar = ({user}) => {
               <div>
                 <Button 
                   color="inherit"
+                  href="/admin"
+                  className="logout"
+                >Admin
+                </Button>
+                <Button 
+                  color="inherit"
                   onClick={onClickLogout}
                   className="logout"
                 >Logout

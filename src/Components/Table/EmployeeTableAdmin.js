@@ -58,7 +58,7 @@ const [errorMessages, setErrorMessages] = useState([]);
   },[])
 
   const handleRowDelete = (oldData, resolve) => {
-    axios.delete(`/api/admin/employee/remove/${oldData.employee_id}`)
+    axios.delete(`/api/admin/employee/${oldData.employee_id}/remove/`)
       .then(res => {
         const dataDelete = [...data];
         const index = oldData.tableData.id;
@@ -87,7 +87,7 @@ const [errorMessages, setErrorMessages] = useState([]);
     }
 
     if(errorList.length < 1){
-      axios.put(`/api/admin/employee/update/${newData.employee_id}`, newData)
+      axios.put(`/api/admin/employee/${newData.employee_id}/update/`, newData)
         .then(res => {
           const dataUpdate = [...data];
           const index = oldData.tableData.id;
