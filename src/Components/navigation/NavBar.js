@@ -48,17 +48,19 @@ const NavBar = ({user}) => {
               <div>
                 <Button 
                   color="inherit"
+                  href="/"
+                >Home
+                </Button>
+                <Button 
+                  color="inherit"
                   href="/admin"
-                  className="logout"
                 >Admin
                 </Button>
                 <Button 
                   color="inherit"
                   onClick={onClickLogout}
-                  className="logout"
                 >Logout
                 </Button>
-                <p className="logged-in-as space-before">Logged in as {user.email}</p>
               </div>
               :
               null
