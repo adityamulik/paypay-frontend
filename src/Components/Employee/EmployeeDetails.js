@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import useUser from '../auth/useUser';
+import { Divider, Grid, Paper } from "@material-ui/core";
 
 const EmployeeDetails = () => {
   const { isLoading, user } = useUser();
@@ -27,12 +28,6 @@ const EmployeeDetails = () => {
         if(res.status === 200) {
           window.alert(res.data.message)
           setData("");
-          // const dataUpdate = feedbackData;
-          // console.log(dataUpdate);
-          // console.log(formData);
-          // const index = oldData.tableData.id;
-          // dataUpdate[index] = newData;
-          // setData([...dataUpdate]);
         }
       })
       .catch(err => console.log(err));    
@@ -52,16 +47,26 @@ const EmployeeDetails = () => {
         <button type="submit">Submit</button>
       </form>
       <br></br>
-      <h4>Feedback: </h4>
+      <h4>Feedbacks: </h4>      
       {             
         feedbackData.length > 0 
         ?   
         feedbackData.map(item => {  
           return (
-            <div className="feedback-container">
-              <p>Feedback: {item.feedback}</p>
-              <p>By: {item.feedback_by}</p>
-            </div>
+            <Paper style={{ padding: "10px 20px" }}>
+              <Grid container wrap="nowrap" spacing={2}>
+                <Grid justifyContent="left" item xs zeroMinWidth>
+                  <h4 style={{ margin: 0, textAlign: "left" }}>{item.feedback_by}</h4>
+                  <p style={{ textAlign: "left" }}>
+                    {item.feedback}
+                  </p>
+                  <p style={{ textAlign: "left", color: "gray" }}>
+                    posted 1 minute ago
+                  </p>
+                </Grid>
+              </Grid>
+              <Divider variant="fullWidth" style={{ margin: "30px 0" }} />
+            </Paper>
           )
         })
         :

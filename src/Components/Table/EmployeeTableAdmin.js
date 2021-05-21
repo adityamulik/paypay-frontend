@@ -18,6 +18,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 
 const tableIcons = {
@@ -118,7 +119,15 @@ const [errorMessages, setErrorMessages] = useState([]);
           { title: 'Name', field: 'name'},
           { title: 'Email', field: 'email'},
           { title: 'Role', field: 'role'},
-          { title: 'Performance Review', field: 'performance_review'}
+          { title: 'Performance Review', field: 'performance_review', editComponent: props => {
+            return (
+              <TextField 
+                value={props.value}
+                inputProps={{ maxLength: 242 }}
+                onChange={(event) => {props.onChange(event.target.value)}}
+              />
+            )
+          }}
         ]}
         data = {data}
         title = "Employee Table (For Admin)"
