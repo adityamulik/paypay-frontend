@@ -8,8 +8,13 @@
   border: solid;
 }
 
-.full-height-page {
-  
+
+
+.centered-container {
+  margin-left: 25%;
+  margin-right: 25%;
+  align-items: center;
+  justify-content: center;
 }
 
 .error-message {
