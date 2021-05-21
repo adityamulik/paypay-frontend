@@ -51,11 +51,16 @@ const NavBar = ({user}) => {
                   href="/"
                 >Home
                 </Button>
-                <Button 
-                  color="inherit"
-                  href="/admin"
-                >Admin
-                </Button>
+                {
+                  user.email === "adminuser@fullstackapp.com" 
+                  ? 
+                  <Button 
+                    color="inherit"
+                    href="/admin"
+                  >Admin
+                  </Button>
+                  : null
+                }                
                 <Button 
                   color="inherit"
                   onClick={onClickLogout}
