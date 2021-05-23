@@ -18,4 +18,9 @@ Frontend application built using ReactJS, a fullstack application with NodeJS, E
 5. Google Firebase (User authentication)
 6. Styled Components.
 
+## Deployment
+
+1. AWS EC2 (Ubuntu) and RDS (MySQL)
+2. Nginx Web Server
+
 ### Author: Aditya Mulik
