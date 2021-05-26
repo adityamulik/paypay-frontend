@@ -1,7 +1,7 @@
 # paypay-frontend
 Frontend application built using ReactJS, a fullstack application with NodeJS, ExpressJS and MySQL for the Backend. Deployed on AWS EC2 instance.
 
-## Demo: http://ec2-34-226-155-204.compute-1.amazonaws.com/
+## Demo: http://ec2-3-88-111-173.compute-1.amazonaws.com/login
 
 ## Installation Guide
 1. Clone the repository & cd to root path of the project: git clone https://github.com/adityamulik/paypay-frontend.git
